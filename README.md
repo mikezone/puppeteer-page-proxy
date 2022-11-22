@@ -2,6 +2,19 @@
 ![node-current](https://img.shields.io/node/v/puppeteer?style=flat-square)
 ![npm](https://img.shields.io/npm/dt/puppeteer-page-proxy?style=flat-square)
 
+# I changed
+In file `src/core/proxy.js`
+```js
+const useProxy = async (target, data) => {
+    // useProxyPer[target.constructor.name](target, data);
+    if (target instanceof HTTPRequest) {
+        return useProxyPer['HTTPRequest'](target, data);
+    }
+    if (target instanceof CDPPage) {
+        return useProxyPer['CDPPage'](target, data);
+    }
+};
+```
 # puppeteer-page-proxy <img src="https://i.ibb.co/kQrN9QJ/puppeteer-page-proxy-logo.png" align="right" width="150" height="150">
 Additional Node.js module to use with **[puppeteer](https://www.npmjs.com/package/puppeteer)** for setting proxies per page basis.
 

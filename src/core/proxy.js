@@ -89,7 +89,12 @@ const useProxyPer = {
 
 // Main function
 const useProxy = async (target, data) => {
-    useProxyPer[target.constructor.name](target, data);
+    // useProxyPer[target.constructor.name](target, data);
+    if (target.goto) {
+        useProxyPer['CDPPage'](target, data);
+    } else {
+        useProxyPer['HTTPRequest'](target, data);
+    }
 };
 
 module.exports = useProxy;
