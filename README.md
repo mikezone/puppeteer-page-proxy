@@ -7,11 +7,10 @@ In file `src/core/proxy.js`
 ```js
 const useProxy = async (target, data) => {
     // useProxyPer[target.constructor.name](target, data);
-    if (target instanceof HTTPRequest) {
-        return useProxyPer['HTTPRequest'](target, data);
-    }
     if (target instanceof CDPPage) {
-        return useProxyPer['CDPPage'](target, data);
+        useProxyPer.CDPPage(target, data);
+    } else if (target instanceof HTTPRequest) {
+        useProxyPer.HTTPRequest(target, data);
     }
 };
 ```

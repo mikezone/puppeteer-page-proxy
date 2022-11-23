@@ -2,6 +2,7 @@ const got = require("got");
 const CookieHandler = require("../lib/cookies");
 const {setHeaders, setAgent} = require("../lib/options");
 const type = require("../util/types");
+const {CDPPage, HTTPRequest} = require( 'puppeteer-core/internal/types.js')
 
 // Responsible for applying proxy
 const requestHandler = async (request, proxy, overrides = {}) => {
@@ -90,10 +91,10 @@ const useProxyPer = {
 // Main function
 const useProxy = async (target, data) => {
     // useProxyPer[target.constructor.name](target, data);
-    if (target.goto) {
-        useProxyPer['CDPPage'](target, data);
-    } else {
-        useProxyPer['HTTPRequest'](target, data);
+    if (target instanceof CDPPage) {
+        useProxyPer.CDPPage(target, data);
+    } else if (target instanceof HTTPRequest) {
+        useProxyPer.HTTPRequest(target, data);
     }
 };
 
