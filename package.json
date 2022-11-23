@@ -1,7 +1,7 @@
 {
   "name": "puppeteer-page-proxy-webpack",
   "description": "Fix use `puppeteer-page-proxy` in webpack changed `constructor.name`",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "author": "Mike (https://github.com/mikezone)",
   "homepage": "https://github.com/mikezone/puppeteer-page-proxy",
   "main": "./src/index.js",
